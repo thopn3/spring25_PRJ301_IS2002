@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <!-- Nhóm thẻ tiêu đề: h1 -> h6 -->
+        <h1>Tiêu đề 1</h1>
+        <h2>Tiêu đề 2</h2>
+        <h6>Tiêu đề 6</h6>
+
+        <!--Nhóm thẻ định dạng nội dung-->
+        <b>Nội dung quan trọng</b>
+        <i>Hình ảnh minh họa</i>
+        Giá cũ: <s>$20</s>
+
+        <!-- Nhóm thẻ đoạn văn bản-->
+        <div>Đoạn văn bản số 1</div>
+        <p>Đoạn văn bản số 2</p>
+        <div>Đoạn văn bản thứ 3</div>
+        <div>Đoạn văn bản thứ 4</div>
+
+        <!-- Thẻ chèn hình ảnh -->
+        <img src="images/logo.png" alt="Logo FPTU" width="200"/>
+
+        <!-- Thẻ liên kết -->
+        <a href="aboutus.html">Giới thiệu</a>
+
+        <!-- Thẻ tạo bảng dữ liệu -->
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>InStock</th>
+                    <th colspan="2">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Product 1</td>
+                    <td>10</td>
+                    <td>100</td>
+                    <td><a href="#">Edit</a></td>
+                    <td><a href="#">Remove</a></td>
+                </tr>
+            </tbody>
+        </table>
+        
+        <!-- Nhóm thẻ Form -->
+        <form>
+            Username <input type="text" name="txtUser"/> <br/>
+            Password <input type="password" name="txtPass"/> <br/>
+            Gender 
+            <input type="radio" name="rbGender" value="male"/> Male
+            <input type="radio" name="rbGender" value="female"/> Female
+            <input type="radio" name="rbGender" value="other"/> Other <br/>
+            Địa chỉ:
+            <textarea name="txtAddress" cols="100" rows="4"></textarea> <br/>
+            Thành phố:
+            <select name="ddlCity">
+                <option value="hn">Hà Nội</option>
+                <option value="dn">Đà Nẵng</option>
+                <option value="hcm">TP Hồ Chí Minh</option>
+            </select>
+        </form>
+    </body>
+</html>
