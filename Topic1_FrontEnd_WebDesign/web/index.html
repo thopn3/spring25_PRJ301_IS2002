@@ -4,10 +4,20 @@
         <title>TODO supply a title</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!--Internal style-->
+        <style>
+            div {
+                background-color: green;
+                color: yellow;
+            }
+        </style>
+        <!--External style-->
+        <link href="css/style.css" rel="stylesheet"/>
     </head>
     <body>
         <!-- Nhóm thẻ tiêu đề: h1 -> h6 -->
-        <h1>Tiêu đề 1</h1>
+        <!--Inline style-->
+        <h1 style="background-color: yellow; color: red">Tiêu đề 1</h1>
         <h2>Tiêu đề 2</h2>
         <h6>Tiêu đề 6</h6>
 
@@ -19,7 +29,7 @@
         <!-- Nhóm thẻ đoạn văn bản-->
         <div>Đoạn văn bản số 1</div>
         <p>Đoạn văn bản số 2</p>
-        <div>Đoạn văn bản thứ 3</div>
+        <div style="color: white">Đoạn văn bản thứ 3</div>
         <div>Đoạn văn bản thứ 4</div>
 
         <!-- Thẻ chèn hình ảnh -->
@@ -29,7 +39,7 @@
         <a href="aboutus.html">Giới thiệu</a>
 
         <!-- Thẻ tạo bảng dữ liệu -->
-        <table border="1">
+        <table>
             <thead>
                 <tr>
                     <th>Id</th>
@@ -52,21 +62,29 @@
         </table>
         
         <!-- Nhóm thẻ Form -->
-        <form>
+        <form method="post" action="index.html">
             Username <input type="text" name="txtUser"/> <br/>
             Password <input type="password" name="txtPass"/> <br/>
             Gender 
-            <input type="radio" name="rbGender" value="male"/> Male
+            <input type="radio" name="rbGender" value="male" checked/> Male
             <input type="radio" name="rbGender" value="female"/> Female
             <input type="radio" name="rbGender" value="other"/> Other <br/>
             Địa chỉ:
-            <textarea name="txtAddress" cols="100" rows="4"></textarea> <br/>
+            <textarea name="txtAddress" cols="100" rows="4" 
+                      placeholder="Nhập thông tin địa chỉ (Số nhà, TDP, Phường)"></textarea> <br/>
             Thành phố:
             <select name="ddlCity">
                 <option value="hn">Hà Nội</option>
-                <option value="dn">Đà Nẵng</option>
+                <option value="dn" selected>Đà Nẵng</option>
                 <option value="hcm">TP Hồ Chí Minh</option>
-            </select>
+            </select><br/>
+            
+            Sở thích
+            <input type="checkbox" name="chkFavorite" value="football"/> Bóng đá
+            <input type="checkbox" name="chkFavorite" value="tenis" checked/> Tenis
+            <input type="checkbox" name="chkFavorite" value="voleyball" checked/> Bóng chuyền<br/>
+            
+            <input type="submit" value="Gửi thông tin" name="btnSend"/>
         </form>
     </body>
 </html>

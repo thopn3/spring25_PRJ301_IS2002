@@ -1,0 +1,22 @@
+/*Style định kiểu cho layout.html*/
+/*Reset style cho trang*/
+*{margin: 0px; padding: 0px}
+
+/*Định dạng cho div có id=header*/
+#header, #footer{
+    border: 1px solid green;
+    min-height: 50px;
+}
+
+#menu{
+    border: 1px dotted brown;
+    line-height: 30px;
+    margin: 5px 0px; /*margin-top, margin-bottom: 5px; margin-right, margin-left: 0px*/
+}
+
+#content{
+    min-height: 200px;
+    border: 1px solid blue;
+    margin-bottom: 5px;
+}
+
