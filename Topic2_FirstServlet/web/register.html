@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>TODO supply a title</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    </head>
+    <body>
+        <h3>Register</h3>
+        <form method="post" action="RegisterProcess">
+            Username (*) <input type="text" name="txtUser"/> <br/>
+            Password (*) <input type="password" name="txtPass"/> <br/>
+            Gender 
+            <input type="radio" name="rbGender" value="male" checked/> Male
+            <input type="radio" name="rbGender" value="female"/> Female
+            <input type="radio" name="rbGender" value="other"/> Other <br/>
+            Địa chỉ:
+            <textarea name="txtAddress" cols="100" rows="4" 
+                      placeholder="Nhập thông tin địa chỉ (Số nhà, TDP, Phường)"></textarea> <br/>
+            Thành phố:
+            <select name="ddlCity">
+                <option value="hn">Hà Nội</option>
+                <option value="dn" selected>Đà Nẵng</option>
+                <option value="hcm">TP Hồ Chí Minh</option>
+            </select><br/>
+
+            Sở thích
+            <input type="checkbox" name="chkFavorite" value="football"/> Bóng đá
+            <input type="checkbox" name="chkFavorite" value="tenis" checked/> Tenis
+            <input type="checkbox" name="chkFavorite" value="voleyball" checked/> Bóng chuyền<br/>
+
+            <input type="submit" value="Gửi thông tin" name="btnSend"/>
+        </form>
+    </body>
+</html>
