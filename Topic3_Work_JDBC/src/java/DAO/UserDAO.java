@@ -42,4 +42,19 @@ public class UserDAO extends DBConnection{
         }
         return users;
     }
+
+    public void addNewUser(User newUser) {
+        try {
+            String sql = "INSERT INTO users(id,username,password) VALUES(?,?,?)";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            // Truyền dữ liệu cho tham số của câu truy vấn
+            ps.setInt(1, newUser.getId());
+            ps.setString(2, newUser.getUsername());
+            ps.setString(3, newUser.getPassword());
+            // Thực thi truy vấn
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
 }

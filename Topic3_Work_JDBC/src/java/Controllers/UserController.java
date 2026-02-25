@@ -3,17 +3,13 @@ package Controllers;
 import DAO.UserDAO;
 import Models.User;
 import java.io.IOException;
-import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 
-
 public class UserController extends HttpServlet {
-
-    
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
@@ -21,20 +17,31 @@ public class UserController extends HttpServlet {
         UserDAO userDao = new UserDAO();
         // Gọi hàm getUsers() để lấy danh sách các User
         List<User> users = userDao.getUsers();
-        // Tạo đối tượng để trả về dữ liệu cho response
-        PrintWriter out = response.getWriter();
-        response.setHeader("Content-Type", "text/html;charset=utf-8");
         
-        out.println("<table border='1'>");
-        out.println("<tr><th>Id</th><th>Name</th><th>Gender</th></tr>");
-        // In ra
-        for(User u : users){
-            out.println("<tr>");
-            out.println("<td>" + u.getId() + "</td>");
-            out.println("<td>" + u.getUsername() + "</td>");
-            out.println("<td>" + u.getGender()+ "</td>");
-            out.println("</tr>");
+        // Tạo 1 attribute để chứa kết quả trả về
+        request.setAttribute("result", users);
+        // Chuyển tiếp kết quả ra JSP để trình bày
+        request.getRequestDispatcher("ListUser.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // Tiếp nhận dữ liệu từ CreateUser.html
+        try {
+            int id = Integer.parseInt(req.getParameter("txtId"));
+            String username = req.getParameter("txtUser");
+            String password = req.getParameter("txtPass");
+            // Khai báo đối tượng kiểu User để cung cấp dữ liệu cho các thuộc tính
+            User newUser = new User();
+            newUser.setId(id);
+            newUser.setUsername(username);
+            newUser.setPassword(password);
+            // Khởi tạo đối tượng kiểu UserDAO để gọi hàm xử lý lưu newUser -> DB
+            UserDAO userDao = new UserDAO();
+            userDao.addNewUser(newUser);
+            // Điều hướng về /user
+            resp.sendRedirect("user");
+        } catch (Exception e) {
         }
-        out.println("</table>");
     }
 }
