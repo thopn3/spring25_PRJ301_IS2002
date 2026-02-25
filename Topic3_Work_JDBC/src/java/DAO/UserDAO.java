@@ -8,12 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 
 public class UserDAO extends DBConnection{
     public UserDAO(){
         super();
     }
     
+    /***
+     * Get all users
+     * @return List<User>
+     */
     public List<User> getUsers(){
         List<User> users = new ArrayList<>();
         
@@ -27,12 +32,14 @@ public class UserDAO extends DBConnection{
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
                 user.setGender(rs.getString("gender"));
-                // ...
+                user.setCity(rs.getString("city"));
+                user.setAddress(rs.getString("address"));
+                user.setFavorites(rs.getString("favorites"));
                 users.add(user);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
         }
-        
         return users;
     }
 }
