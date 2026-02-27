@@ -21,7 +21,7 @@ public class UserController extends HttpServlet {
         // Tạo 1 attribute để chứa kết quả trả về
         request.setAttribute("result", users);
         // Chuyển tiếp kết quả ra JSP để trình bày
-        request.getRequestDispatcher("ListUser.jsp").forward(request, response);
+        request.getRequestDispatcher("ListUser_UsingJSTL.jsp").forward(request, response);
     }
 
     @Override
