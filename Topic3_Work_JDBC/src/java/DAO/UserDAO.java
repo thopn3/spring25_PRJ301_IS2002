@@ -69,6 +69,7 @@ public class UserDAO extends DBConnection{
                 user.setUsername(rs.getString("username"));
                 user.setPassword(rs.getString("password"));
                 user.setGender(rs.getString("gender"));
+                user.setAddress(rs.getString("address"));
                 user.setCity(rs.getString("city"));
                 user.setFavorites(rs.getString("favorites"));
             }
@@ -76,5 +77,37 @@ public class UserDAO extends DBConnection{
             System.out.println("Error: " + e.getMessage());
         }
         return user;
+    }
+
+    public int editUser(User editUser) {
+        int rows = 0;
+        try {
+            String sql = "UPDATE users SET username=?,password=?,gender=?,address=?,city=?,favorites=? WHERE id=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setString(1, editUser.getUsername());
+            ps.setString(2, editUser.getPassword());
+            ps.setString(3, editUser.getGender());
+            ps.setString(4, editUser.getAddress());
+            ps.setString(5, editUser.getCity());
+            ps.setString(6, editUser.getFavorites());
+            ps.setInt(7, editUser.getId());
+            rows = ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        return rows;
+    }
+
+    public int deleteUser(int id) {
+        int rows = 0;
+        try {
+            String sql = "DELETE FROM users WHERE id=?";
+            PreparedStatement ps = conn.prepareStatement(sql);
+            ps.setInt(1, id);
+            rows = ps.executeUpdate();
+        } catch (SQLException e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+        return rows;
     }
 }

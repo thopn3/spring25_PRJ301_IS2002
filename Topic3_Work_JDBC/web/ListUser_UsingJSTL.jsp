@@ -2,6 +2,7 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <h1>List of Users</h1>
+<a href="CreateUser.html">Create new User</a>
 <table border="1">
     <tr>
         <th>Id</th>

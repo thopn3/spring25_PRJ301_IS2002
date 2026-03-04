@@ -22,7 +22,32 @@ public class EditUserController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        super.doPost(req, resp); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/OverriddenMethodBody
+        try {
+            int id = Integer.parseInt(req.getParameter("id"));
+            String username = req.getParameter("username");
+            String password = req.getParameter("password");
+            String gender = req.getParameter("gender");
+            String address = req.getParameter("address");
+            String city = req.getParameter("city");
+            String favorites[] = req.getParameterValues("fav");
+            // Khai báo đối tượng kiểu User để cung cấp dữ liệu cho các thuộc tính
+            User editUser = new User();
+            editUser.setId(id);
+            editUser.setUsername(username);
+            editUser.setPassword(password);
+            editUser.setGender(gender);
+            editUser.setAddress(address);
+            editUser.setCity(city);
+            editUser.setFavorites(String.join(";", favorites));
+            // Khởi tạo đối tượng kiểu UserDAO để gọi hàm xử lý lưu newUser -> DB
+            UserDAO userDao = new UserDAO();
+            int rowEffected = userDao.editUser(editUser);
+            if(rowEffected>0)
+                resp.sendRedirect("user");
+            // Điều hướng về /user
+            resp.sendRedirect("user");
+        } catch (Exception e) {
+        }
     }
     
     
